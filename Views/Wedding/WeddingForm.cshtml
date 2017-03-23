@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container col-lg-6">
+    <h1>Create Wedding</h1>
+    <form action="CreateWedding" method="post">
+         <div class="form-group">
+            <label for="Bride">Bride</label>
+            <input type="text" class="form-control" name="Bride" id="Bride">
+        </div>
+        <div class="form-group">
+            <label for="Groom">Groom</label>
+            <input type="text" class="form-control" name="Groom" id="Groom">
+        </div>
+        <div class="form-group">
+            <label for="day">Day of Wedding</label>
+            <input type="date" class="form-control" name="DateOfWedding" id="day">
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-success" value="Create">
+        </div>
+    </form>
+    
+</div>
+<div class="container col-lg-8">
+    @{
+        foreach(var error in ViewBag.Errors)
+        {
+            //If there are any errors for a field...
+            if(@error.Errors.Count > 0)
+            {
+                // We show the first error for that field
+                <p>@error.Errors[0].ErrorMessage</p>
+            }
+        }
+    }
+</div>

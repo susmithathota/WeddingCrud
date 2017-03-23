@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div>
+<h1>@ViewBag.WeddingInfo.Bride and @ViewBag.WeddingInfo.Groom's Wedding</h1>
+</div>
+<div>
+<h3>@ViewBag.WeddingInfo.DateOfWedding.ToString("MMMM dd,yyyy")</h3>
+</div>
+<div>
+<h4>Guests</h4> 
+<ul>
+    @foreach(var rsvp in ViewBag.WeddingInfo.rsvps){
+        <li>@rsvp.User.FirstName</li>
+    }
+</ul>
+</div>

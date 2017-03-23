@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+<h4>Welcome @ViewBag.MyUser.FirstName</h4>
+<div class="col-lg-8">
+@{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Guests </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in @ViewBag.WeddingList){
+                <tr>
+                    <td> <a href="WeddingDetail/@item.WeddingId"> @item.Bride, @item.Groom </a> </td>
+                    <td>@item.DateOfWedding.ToString("MMMM dd,yyyy")</td>
+                    <td>@item.rsvps.Count</td>
+                     <td>
+                         <form action="AddRSVP/@item.WeddingId" method="get">
+                             <input type="submit" value="Rsvp">
+                         </form>
+                         <a href="RemoveRsvp/@item.WeddingId"> UnRsvp </a> 
+                     </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+</div>
+<p>@ViewBag.RsvpError</p>
+<div class="col-lg-6">
+    <h4>   <a href="PlanWedding">Plan new Wedding</a> </h4>
+</div>
